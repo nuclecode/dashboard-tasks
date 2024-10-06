@@ -1,7 +1,5 @@
 Production build here -> [dashboad-nuclecode](https://dashboard-nuclecode.netlify.app/)
 
-
-
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
 ## Getting Started
@@ -298,6 +296,7 @@ import JournalList from './components/JournalList';
 
 export default function Home() {
 return (
+
 <main>
 <h1>Client Development Journal</h1>
 <JournalForm />
@@ -320,6 +319,7 @@ Components, models, and utility functions remain in their respective folders (sr
 This structure makes use of Next.js' new file-based routing system under the App Router, giving you more flexibility with layouts and server-side rendering capabilities.
 
 # favicon
+
 ```
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="100" height="100">
 
@@ -346,11 +346,73 @@ DiaryApp.js
 ├── State: editEntry (currently edited entry)
 ├── Functions: addEntry, handleEdit, handleDelete
 └── Renders:
-    ├── JournalForm (passes addEntry and editEntry)
-    └── JournalList (passes entries, handleEdit, handleDelete)
+├── JournalForm (passes addEntry and editEntry)
+└── JournalList (passes entries, handleEdit, handleDelete)
 
 JournalForm.js
 ├── State: task, customerConsent, completionDate, description (form fields)
 ├── Effect: populates form when editing an entry
 └── Handles submission: calls addEntry (passed from DiaryApp) with new or edited entry
 
+## Tags for different versions
+
+### How to Add a Tag on GitHub
+
+You can add a tag to your repository either using Git from the command line or directly through the GitHub web interface. Follow the steps below:
+
+#### 1. **Adding a Tag via Command Line (Git CLI)**
+
+If you want to tag a specific version of your code using Git, follow these steps:
+
+1. **Make sure all changes are committed**:
+
+   ```bash
+   git add .
+   git commit -m "Your commit message"
+   ```
+
+2. **Create a tag**:
+
+   - For a lightweight tag:
+     ```bash
+     git tag v1.0.0
+     ```
+   - For an annotated tag (with description):
+     ```bash
+     git tag -a v1.0.0 -m "Release version 1.0.0"
+     ```
+
+3. **Push the tag to the remote repository (GitHub)**:
+
+   ```bash
+   git push origin v1.0.0
+   ```
+
+4. **Push all tags at once (if you have multiple tags)**:
+   ```bash
+   git push --tags
+   ```
+
+Now the tag will be available in the GitHub repository.
+
+#### 2. **Adding a Tag via GitHub Web Interface**
+
+You can also add a tag through the GitHub website by following these steps:
+
+1. Go to your repository on GitHub.
+2. On the main page, find the **Releases** button, typically located near the "Code" tab.
+3. Click the **Draft a new release** button.
+4. In the **Tag version** field, enter the version number you want to tag, e.g., `v1.0.0`.
+5. Select the branch to which the tag should be applied (usually `main` or `master`).
+6. Add a title and description for the release.
+7. Click **Publish release**.
+
+Your tag will now be created on GitHub and associated with the selected version of your code.
+
+#### How to View Existing Tags
+
+- To view existing tags in the terminal, use the following command:
+  ```bash
+  git tag
+  ```
+- On GitHub, tags can be found under the "Tags" section on the Releases page.
