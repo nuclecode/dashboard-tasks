@@ -1,31 +1,33 @@
 "use client";
 
-import React from 'react';
+import React, { forwardRef } from 'react';
 
-const EntryCard = ({ entry, onEdit, onDelete }) => {
+const EntryCard = forwardRef(({ entry, onEdit, onDelete }, ref) => {
   const {
     id,
     task,
     customerConsent,
     completionDate,
     resultDescription,
-    recordDate,
+    approvalDate,
   } = entry;
 
   return (
+    <div ref={ref} className="entry-card">
     <div style={styles.card}>
       <h3 style={styles.title}>Task #{id}: {task}</h3>
-      <p><strong>Customer Consent:</strong> {customerConsent}</p>
-      <p><strong>Date of Completion:</strong> {completionDate}</p>
-      <p><strong>Description of the Result:</strong> {resultDescription}</p>
-      <p><strong>Approval Date:</strong> {recordDate}</p>
+      <p><strong>Customer Consent:</strong> {customerConsent ? 'Yes' : 'No' }</p>
+      <p><strong>Date of Completion:</strong> {completionDate || 'Not completed'}</p>
+      <p><strong>Description of the Result:</strong> {resultDescription || 'Not result yet'}</p>
+      <p><strong>Approval Date:</strong> {approvalDate || 'Not approved yet'}</p>
       <div style={styles.actions}>
         <button onClick={() => onEdit(entry)}>Edit</button>
         <button onClick={() => onDelete(entry.id)}>Delete</button>
       </div>
     </div>
+    </div>
   );
-};
+});
 
 const styles = {
   card: {

@@ -12,11 +12,11 @@
   {
     "id": 2,
     "task": "create",
-    "customerConsent": false,
-    "completionDate": "",
-    "resultDescription": "",
-    "clientApproval": false,
-    "approvalDate": "",
+    "customerConsent": true,
+    "completionDate": "2024-10-06",
+    "resultDescription": "create",
+    "clientApproval": true,
+    "approvalDate": "2024-10-06",
     "archived": false
   },
   {
@@ -52,11 +52,11 @@
   {
     "id": 6,
     "task": "sixth record",
-    "customerConsent": false,
-    "completionDate": "",
-    "resultDescription": "",
-    "clientApproval": false,
-    "approvalDate": "",
+    "customerConsent": true,
+    "completionDate": "2024-10-06",
+    "resultDescription": "sixth record",
+    "clientApproval": true,
+    "approvalDate": "2024-10-06",
     "archived": false
   },
   {
@@ -78,5 +78,45 @@
     "clientApproval": false,
     "approvalDate": "2024-10-06",
     "archived": false
+  },
+  {
+    "id": 9,
+    "task": "Set up responsive layout",
+    "customerConsent": false,
+    "completionDate": "",
+    "resultDescription": "",
+    "clientApproval": false,
+    "approvalDate": "",
+    "archived": true
+  },
+  {
+    "id": 10,
+    "task": "Optimize images in hero section",
+    "customerConsent": true,
+    "completionDate": "2024-10-01",
+    "resultDescription": "Optimize images well done",
+    "clientApproval": true,
+    "approvalDate": "2024-10-06T01:18:59.209Z",
+    "archived": false
+  },
+  {
+    "id": 11,
+    "task": "create about page",
+    "customerConsent": false,
+    "completionDate": "",
+    "resultDescription": "",
+    "clientApproval": false,
+    "approvalDate": "",
+    "archived": false
+  },
+  {
+    "id": 12,
+    "task": "Create contact form",
+    "customerConsent": false,
+    "completionDate": "",
+    "resultDescription": "",
+    "clientApproval": false,
+    "approvalDate": "",
+    "archived": true
   }
 ]

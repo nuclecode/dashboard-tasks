@@ -1,8 +1,10 @@
 //import dbConnect from '@/lib/dbConnect';
 //import Entry from '@/models/Entry';
+
+import { NextResponse } from 'next/server';
 export const runtime = 'nodejs';
 
-import fs from 'fs';
+import { promises as fs } from 'fs';
 import path from 'path';
 
 // Define the path to the data file
@@ -11,7 +13,7 @@ const dataFilePath = path.join(process.cwd(), 'data.json');
 // Function to handle the API route
 export async function GET(req) {
   try {
-    const data = fs.readFileSync(dataFilePath, 'utf-8');
+    const data = await fs.readFile(dataFilePath, 'utf-8');
     const entries = JSON.parse(data);
 
     return new Response(JSON.stringify(entries), {
@@ -31,7 +33,7 @@ export async function POST(req) {
   try {
     const newEntry = await req.json(); // Get the new entry from the request body
 
-    const data = fs.readFileSync(dataFilePath, 'utf-8');
+    const data = await fs.readFile(dataFilePath, 'utf-8');
 
     const entries = JSON.parse(data);
 
@@ -46,7 +48,7 @@ export async function POST(req) {
     }
 
     // Write the updated entries back to the data file
-    fs.writeFileSync(dataFilePath, JSON.stringify(entries, null, 2));
+    await fs.writeFile(dataFilePath, JSON.stringify(entries, null, 2));
 
     return new Response(JSON.stringify(newEntry), {
       status: 201,
@@ -65,16 +67,18 @@ export async function POST(req) {
 
 export async function PUT(request) {
   try {
-    const data = fs.readFileSync(dataFilePath, 'utf-8');
+    const { id, ...updatedData } = await request.json();
+
+    const data = await fs.readFile(dataFilePath, 'utf-8');
     const entries = JSON.parse(data);
 
-    const { id, ...updatedData } = await request.json();
+    // const { id, ...updatedData } = await request.json();
 
     const updatedEntries = entries.map(entry =>
        entry.id === id ? { ...entry, ...updatedData } : entry
     );
 
-    fs.writeFileSync(dataFilePath, JSON.stringify(updatedEntries, null, 2));
+    await fs.writeFile(dataFilePath, JSON.stringify(updatedEntries, null, 2));
 
     return new Response(JSON.stringify({
       message: 'Entry updated successfully',
